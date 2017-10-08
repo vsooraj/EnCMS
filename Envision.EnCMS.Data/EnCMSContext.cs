@@ -1,10 +1,10 @@
-﻿using Envision.EnCMS.Entities.Models;
+﻿
+using Envision.EnCMS.Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Envision.EnCMS.Data
 {
-
     public class EnCMSContext : DbContext
     {
         public DbSet<Gadget> Gadgets { get; set; }

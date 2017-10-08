@@ -1,18 +1,14 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Windows;
-using System.Windows.Input;
+using System.Windows.Controls;
 
-namespace Envision.EnCMS.EncryptDecryptWpf
-{   /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+namespace Ivedix.MiCryptography.Application.Views
+{
+    public partial class Decryptor : TabItem
     {
-
-        public MainWindow()
+        public Decryptor()
         {
             InitializeComponent();
         }
@@ -51,7 +47,7 @@ namespace Envision.EnCMS.EncryptDecryptWpf
         {
             // First we need to turn the input string into a byte array. 
             byte[] clearBytes =
-              System.Text.Encoding.Unicode.GetBytes(clearText);
+                System.Text.Encoding.Unicode.GetBytes(clearText);
 
             // Then, we need to turn the password into Key and IV 
             // We are using salt to make it harder to guess our key
@@ -59,7 +55,7 @@ namespace Envision.EnCMS.EncryptDecryptWpf
             // trying to guess a password by enumerating all possible words. 
             PasswordDeriveBytes pdb = new PasswordDeriveBytes(password,
                 new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d,
-            0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
+                    0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
 
             // Now get the key/IV and do the encryption using the
             // function that accepts byte arrays. 
@@ -74,7 +70,7 @@ namespace Envision.EnCMS.EncryptDecryptWpf
             // You can also read KeySize/BlockSize properties off
             // the algorithm to find out the sizes. 
             byte[] encryptedData = Encrypt(clearBytes,
-                     pdb.GetBytes(32), pdb.GetBytes(16));
+                pdb.GetBytes(32), pdb.GetBytes(16));
 
             // Now we need to turn the resulting byte array into a string. 
             // A common mistake would be to use an Encoding class for that.
@@ -120,7 +116,7 @@ namespace Envision.EnCMS.EncryptDecryptWpf
             // writing data to the stream and the output will be written
             // in the MemoryStream we have provided. 
             CryptoStream cs = new CryptoStream(ms,
-               alg.CreateEncryptor(), CryptoStreamMode.Write);
+                alg.CreateEncryptor(), CryptoStreamMode.Write);
 
             // Write the data and make it do the encryption 
             cs.Write(clearData, 0, clearData.Length);
@@ -152,7 +148,7 @@ namespace Envision.EnCMS.EncryptDecryptWpf
             // trying to guess a password by enumerating all possible words. 
             PasswordDeriveBytes pdb = new PasswordDeriveBytes(password,
                 new byte[] {0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65,
-            0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
+                    0x64, 0x76, 0x65, 0x64, 0x65, 0x76});
 
             // Now get the key/IV and do the decryption using
             // the function that accepts byte arrays. 
@@ -232,8 +228,5 @@ namespace Envision.EnCMS.EncryptDecryptWpf
 
             return decryptedData;
         }
-
-
     }
 }
-

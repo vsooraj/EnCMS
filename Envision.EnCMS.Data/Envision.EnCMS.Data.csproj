@@ -5,17 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="EnCMSEntities.cs" />
-    <Compile Remove="Infrastructure\DbFactory.cs" />
-    <Compile Remove="Infrastructure\Disposable.cs" />
-    <Compile Remove="Infrastructure\IDbFactory.cs" />
-    <Compile Remove="Infrastructure\IRepository.cs" />
-    <Compile Remove="Infrastructure\IUnitOfWork.cs" />
-    <Compile Remove="Infrastructure\RepositoryBase.cs" />
-    <Compile Remove="Infrastructure\UnitOfWork.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="2.0.0-preview1-final" />
@@ -23,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Envision.EnCMS.Model\Envision.EnCMS.Entities.csproj" />
+    <ProjectReference Include="..\Envision.EnCMS.Entities\Envision.EnCMS.Entities.csproj" />
   </ItemGroup>
 
 </Project>
