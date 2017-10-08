@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="CategoryService.cs" />
+    <Compile Remove="GadgetService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Envision.EnCMS.Data\Envision.EnCMS.Data.csproj" />
+    <ProjectReference Include="..\Envision.EnCMS.Model\Envision.EnCMS.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
