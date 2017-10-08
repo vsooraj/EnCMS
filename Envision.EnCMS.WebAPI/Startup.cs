@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Envision.EnCMS.Data;
+using Microsoft.EntityFrameworkCore;
+using Envision.EnCMS.Data.Infrastructure;
 
 namespace Envision.EnCMS.WebAPI
 {
@@ -24,10 +27,12 @@ namespace Envision.EnCMS.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+             var connectionString = @"Server=.\SQLEXPRESS;Database=EnvisionCMS;User ID=sa;Password=c@b0t1234";
+            services.AddDbContext<EnCMSContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, EnCMSContext dbcontext)
         {
             if (env.IsDevelopment())
             {
@@ -35,6 +40,7 @@ namespace Envision.EnCMS.WebAPI
             }
 
             app.UseMvc();
+            DbInitializer.Initialize(null, "");
         }
     }
 }

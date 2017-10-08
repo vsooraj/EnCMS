@@ -16,4 +16,8 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Envision.EnCMS.Data\Envision.EnCMS.Data.csproj" />
+  </ItemGroup>
+
 </Project>

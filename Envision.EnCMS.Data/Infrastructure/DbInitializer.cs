@@ -13,7 +13,7 @@ namespace Envision.EnCMS.Data.Infrastructure
         public static void Initialize(IServiceProvider serviceProvider, string imagesPath)
         {
             context = (EnCMSContext)serviceProvider.GetService(typeof(EnCMSContext));
-
+            context.Database.EnsureCreated();
             InitializePhotoAlbums(imagesPath);
             InitializeUserRoles();
 
@@ -78,6 +78,7 @@ namespace Envision.EnCMS.Data.Infrastructure
                 context.SaveChanges();
             }
         }
+
 
         private static void InitializeUserRoles()
         {

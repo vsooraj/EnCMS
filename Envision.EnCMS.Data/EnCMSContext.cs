@@ -16,13 +16,9 @@ namespace Envision.EnCMS.Data
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Error> Errors { get; set; }
 
-        public EnCMSContext(DbContextOptions options) : base(options)
-        {
-        }
-        //public virtual void Commit()
-        //{
-        //    base.SaveChanges();
-        //}
+        public EnCMSContext(DbContextOptions<EnCMSContext> options)
+            : base(options)
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -53,8 +49,8 @@ namespace Envision.EnCMS.Data
             // Role
             modelBuilder.Entity<Role>().Property(r => r.Name).IsRequired().HasMaxLength(50);
 
-            //modelBuilder.ApplyConfiguration<GadgetConfiguration>;
-            //modelBuilder.Configurations.Add(new CategoryConfiguration());
+            //modelBuilder.ApplyConfiguration(new GadgetConfiguration());
+            //modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         }
     }
 
